@@ -23,6 +23,11 @@
 #include <time.h>
 #include "apps/sntp/sntp.h"     // espressif esp32/arduino V1.0.0
 //#include "lwip/apps/sntp.h"   // espressif esp32/arduino V1.0.1-rc2 or higher
+#include <HTTPClient.h>
+#include <DNSServer.h> 
+#include <WebServer.h>
+#include <WiFiManager.h>
+WiFiManager wifiManager;
 
 // Digital I/O used
 #define SPI_MOSI      12
@@ -850,17 +855,40 @@ void timer50ms()
     }
 }
 //*********************************************************************************************************
+//callback que indica que o ESP entrou no modo AP
+void configModeCallback (WiFiManager *myWiFiManager) {  
+  Serial.println("Entrou no modo de configuração");
+  Serial.println(WiFi.softAPIP()); //imprime o IP do AP
+  Serial.println(myWiFiManager->getConfigPortalSSID()); //imprime o SSID criado da rede
+}
+ 
+//Callback que indica que salvamos uma nova rede para se conectar (modo estação)
+void saveConfigCallback () {
+  Serial.println("Configuração salva");
+}
+//*********************************************************************************************************
+void pegarhora()
+{
+    if(sntp_enabled()){
+    sntp_stop();
+}
+    _f_rtc= rtc.begin(TZName);
+}
 void setup()
 {
     Serial.begin(115200); // For debug
+    
     pinMode(MAX_CS, OUTPUT);
     digitalWrite(MAX_CS, HIGH);
     SPI.begin(SPI_SCK, SPI_MISO, SPI_MOSI);
+    
     WiFi.disconnect();
     WiFi.mode(WIFI_MODE_STA);
     _SSID=SSID;
     _PW=PW;
     wifiMulti.addAP(_SSID.c_str(), _PW.c_str());                // SSID and PW in code
+    
+
     //wifiMulti.addAP(s_ssid.c_str(), s_password.c_str());      // more credential can be added here
     Serial.println("WiFI_info  : Connecting WiFi...");
     if(wifiMulti.run()==WL_CONNECTED){
@@ -870,7 +898,11 @@ void setup()
     }else{
         Serial.printf("WiFi credentials are not correct\n");
         _SSID = ""; _myIP="0.0.0.0";
-        while(true){;} // endless loop
+         //callback para quando entra em modo de configuração AP
+        wifiManager.setAPCallback(configModeCallback); 
+        //callback para quando se conecta em uma rede, ou seja, quando passa a trabalhar em modo estação
+        wifiManager.setSaveConfigCallback(saveConfigCallback); 
+        
     }
     helpArr_init();
     max7219_init();
@@ -880,10 +912,25 @@ void setup()
     _f_rtc= rtc.begin(TZName);
     if(!_f_rtc) Serial.println("no timepacket received from ntp");
     tckr.attach(0.05, timer50ms);    // every 50 msec
+    
+    if(wifiMulti.run()!=WL_CONNECTED){
+    wifiManager.resetSettings();       //Apaga rede salva anteriormente
+      if(!wifiManager.startConfigPortal("ESP32-CONFIG", "12345678") ){ //Nome da Rede e Senha gerada pela ESP
+        Serial.println("Falha ao conectar"); //Se caso não conectar na rede mostra mensagem de falha
+        delay(2000);
+        ESP.restart(); //Reinicia ESP após não conseguir conexão na rede
+      }
+      else{       //Se caso conectar 
+        Serial.println("Conectado na Rede!!!");
+        pegarhora();
+       // ESP.restart(); //Reinicia ESP após conseguir conexão na rede 
+      }
+    }
 }
 //*********************************************************************************************************
 void loop()
 {
+   
     uint8_t sek1 = 0, sek2 = 0, min1 = 0, min2 = 0, std1 = 0, std2 = 0;
     uint8_t sek11 = 0, sek12 = 0, sek21 = 0, sek22 = 0;
     uint8_t min11 = 0, min12 = 0, min21 = 0, min22 = 0;
