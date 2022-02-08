@@ -28,6 +28,9 @@
 #include <WebServer.h>
 #include <WiFiManager.h>
 WiFiManager wifiManager;
+#include <ESP32Ping.h>
+#include <Arduino_JSON.h>
+#include <teste.h>
 
 // Digital I/O used
 #define SPI_MOSI      12
@@ -79,6 +82,10 @@ uint16_t _chbuf[256];
 
 String M_arr[12] = {"Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Setembro","Outubro","Novembro","Dezembro"};
 String WD_arr[7] = {"Domingo,","Segunda,","Terça,","Quarta,","Quinta,","Sexta,","Sabado,"};
+
+// coletar msg site
+String serverName = "https://sites.google.com/view/matrizrelogio/in%C3%ADcio";
+
 
 
 // Font 5x8 for 8x8 matrix, 0,0 is above right
@@ -867,6 +874,7 @@ void saveConfigCallback () {
   Serial.println("Configuração salva");
 }
 //*********************************************************************************************************
+
 void pegarhora()
 {
     if(sntp_enabled()){
@@ -874,6 +882,8 @@ void pegarhora()
 }
     _f_rtc= rtc.begin(TZName);
 }
+
+//***********************************************
 void setup()
 {
     Serial.begin(115200); // For debug
@@ -926,6 +936,17 @@ void setup()
        // ESP.restart(); //Reinicia ESP após conseguir conexão na rede 
       }
     }
+
+     bool success = Ping.ping("www.google.com", 3);
+    if(!success){
+        Serial.println("Ping failed");
+    return;
+    } else{ 
+        Serial.println("Ping succesful.");
+        
+    }
+ 
+  
 }
 //*********************************************************************************************************
 void loop()
