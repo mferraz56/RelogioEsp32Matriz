@@ -13,7 +13,8 @@
 // OR COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
 //
-//
+//*********************************************************************************************************
+// Modificações e adaptações no codigo foram realizadas para habilitar a utilização da mesma configuração para matriz 8X32
 // system libraries
 #include <Arduino.h>
 #include <WiFiClient.h>
@@ -28,10 +29,20 @@
 #include <WebServer.h>
 #include <WiFiManager.h>
 WiFiManager wifiManager;
-#include <ESP32Ping.h>
-#include <Arduino_JSON.h>
-#include <teste.h>
+//#include <ESP32Ping.h>
+//#include <Arduino_JSON.h>
+//#include "LedMatrix.h"
 
+// Bluetooth
+/*
+#include "BluetoothSerial.h"
+
+#if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
+#error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
+#endif
+
+BluetoothSerial SerialBT;
+*/
 // Digital I/O used
 #define SPI_MOSI      12
 #define SPI_MISO      2    // not connected
@@ -57,7 +68,7 @@ WiFiManager wifiManager;
 //#define ROTATE_90                                 // Generic display
 
 // other defines --------------------------------------
-#define BRIGHTNESS   1     // values can be 0...15
+#define BRIGHTNESS   0     // values can be 0...15
 #define anzMAX       6     // number of cascaded MAX7219
 #define FORMAT24H          // if not defined time will be displayed in 12h fromat
 #define SCROLLDOWN         // if not defined it scrolls up
@@ -84,7 +95,7 @@ String M_arr[12] = {"Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho
 String WD_arr[7] = {"Domingo,","Segunda,","Terça,","Quarta,","Quinta,","Sexta,","Sabado,"};
 
 // coletar msg site
-String serverName = "https://sites.google.com/view/matrizrelogio/in%C3%ADcio";
+//String serverName = "https://sites.google.com/view/matrizrelogio/in%C3%ADcio";
 
 
 
@@ -863,10 +874,12 @@ void timer50ms()
 }
 //*********************************************************************************************************
 //callback que indica que o ESP entrou no modo AP
+
 void configModeCallback (WiFiManager *myWiFiManager) {  
-  Serial.println("Entrou no modo de configuração");
-  Serial.println(WiFi.softAPIP()); //imprime o IP do AP
-  Serial.println(myWiFiManager->getConfigPortalSSID()); //imprime o SSID criado da rede
+    Serial.println("Entrou no modo de configuração");
+    Serial.println(WiFi.softAPIP()); //imprime o IP do AP
+    Serial.println(myWiFiManager->getConfigPortalSSID()); //imprime o SSID criado da rede
+    
 }
  
 //Callback que indica que salvamos uma nova rede para se conectar (modo estação)
@@ -878,10 +891,12 @@ void saveConfigCallback () {
 void pegarhora()
 {
     if(sntp_enabled()){
-    sntp_stop();
-}
+        sntp_stop();        
+    }
     _f_rtc= rtc.begin(TZName);
 }
+//*****************************************************************************************************
+
 
 //***********************************************
 void setup()
@@ -892,12 +907,17 @@ void setup()
     digitalWrite(MAX_CS, HIGH);
     SPI.begin(SPI_SCK, SPI_MISO, SPI_MOSI);
     
+    
+
+
+
     WiFi.disconnect();
     WiFi.mode(WIFI_MODE_STA);
     _SSID=SSID;
     _PW=PW;
     wifiMulti.addAP(_SSID.c_str(), _PW.c_str());                // SSID and PW in code
     
+
 
     //wifiMulti.addAP(s_ssid.c_str(), s_password.c_str());      // more credential can be added here
     Serial.println("WiFI_info  : Connecting WiFi...");
@@ -923,12 +943,14 @@ void setup()
     if(!_f_rtc) Serial.println("no timepacket received from ntp");
     tckr.attach(0.05, timer50ms);    // every 50 msec
     
+    //unsigned long TempoAnteriorMatriz =0;
     if(wifiMulti.run()!=WL_CONNECTED){
-    wifiManager.resetSettings();       //Apaga rede salva anteriormente
+    //wifiManager.resetSettings();       //Apaga rede salva anteriormente
       if(!wifiManager.startConfigPortal("ESP32-CONFIG", "12345678") ){ //Nome da Rede e Senha gerada pela ESP
         Serial.println("Falha ao conectar"); //Se caso não conectar na rede mostra mensagem de falha
-        delay(2000);
-        ESP.restart(); //Reinicia ESP após não conseguir conexão na rede
+        //delay(2000);
+        //ESP.restart(); //Reinicia ESP após não conseguir conexão na rede
+        
       }
       else{       //Se caso conectar 
         Serial.println("Conectado na Rede!!!");
@@ -937,7 +959,10 @@ void setup()
       }
     }
 
-     bool success = Ping.ping("www.google.com", 3);
+    /*SerialBT.begin("ESP32test"); //Bluetooth device name
+    Serial.println("The device started, now you can pair it with bluetooth!");
+    */
+ /*    bool success = Ping.ping("www.google.com", 3);
     if(!success){
         Serial.println("Ping failed");
     return;
@@ -945,7 +970,7 @@ void setup()
         Serial.println("Ping succesful.");
         
     }
- 
+ */
   
 }
 //*********************************************************************************************************
@@ -1183,6 +1208,15 @@ void loop()
         }
     }  //end while(true)
     //this section can not be reached
+
+    // BLUETOOTH READ 
+    /*
+    if (Serial.available()) {
+        SerialBT.write(Serial.read());
+    }
+    if (SerialBT.available()) {
+        Serial.write(SerialBT.read());
+    }*/
 }
 //*********************************************************************************************************
 //    Examples for time zones                                                                             *
