@@ -4,8 +4,6 @@
 	🚧 Página em construção...  🚧
 </h2>
 
-![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/main/Imagens/relogiomatrix.gif)
-
 ####### Andamento - CONCLUÍDO
 - [x] componentes
 - - [x] placa de desenvolvimento com microcontrolador esp32
@@ -26,6 +24,8 @@ Para criação dos emojis e da instrução para sua exibição, foi utilizado o 
 
 ![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/main/Capturar.PNG)
 
+![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/main/Imagens/relogiomatrix.gif)
+
 <h3 align="">
 Foi realizado diversos testes de acrescimo de funcionabilidades, no entanto nem todas tentativas tiveram sucesso até o momento. 
 </h3>
@@ -38,4 +38,6 @@ Foi realizado diversos testes de acrescimo de funcionabilidades, no entanto nem 
 
 ![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/main/testes.png)
 
+<h4> Modelagem do case</h4>
+aaaaaaaaaaaaaaaaaaaaa
 
