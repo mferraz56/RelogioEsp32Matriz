@@ -16,8 +16,7 @@
 - [x] modelagem do case
 - [x] impressão do case (devido a problemas na impressora na data da realização foi solicitada a confecção por corte de MDF)
 
-<h2> </h2>
-<h3 align="">
+<h2> <h3 align="">
 Para criação dos emojis e da instrução para sua exibição, foi utilizado o software 8x8 ROM PixelFont Editor.
 </h3>
 
@@ -26,6 +25,8 @@ Para criação dos emojis e da instrução para sua exibição, foi utilizado o 
 ![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/main/Capturar.PNG)
 
 ![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/main/Imagens/relogiomatrix.gif)
+</h2>
+
 
 <h3 align="">
 Foi realizado diversos testes de acrescimo de funcionabilidades, no entanto nem todas tentativas tiveram sucesso até o momento. 
