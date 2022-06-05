@@ -16,6 +16,7 @@
 - [x] modelagem do case
 - [x] impressão do case (devido a problemas na impressora na data da realização foi solicitada a confecção por corte de MDF)
 
+<h2> </h2>
 <h3 align="">
 Para criação dos emojis e da instrução para sua exibição, foi utilizado o software 8x8 ROM PixelFont Editor.
 </h3>
