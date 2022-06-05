@@ -37,7 +37,8 @@ Foi realizado diversos testes de acrescimo de funcionabilidades, no entanto nem 
 - [x] Acesso wireless
 - - [x] Inserir rede caso a salva na memoria de programa esteja errada.
 - - [ ] Alocar em memoria permanente a rede salva.
-- - [ ] transmitir ip de conexão para configuração para o display
+- - [ ] Transmitir ip de conexão para configuração para visualização no display
+- [] Consulta de texto pela internet, para mudar texto do dysplay remotamente
 
 ![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/main/testes.png)
 </h2>
