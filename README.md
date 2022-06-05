@@ -16,19 +16,19 @@
 - [x] modelagem do case
 - [x] impressão do case (devido a problemas na impressora na data da realização foi solicitada a confecção por corte de MDF)
 
-<h2> <h3 align="">
+<h2> <h3 align="center">
 Para criação dos emojis e da instrução para sua exibição, foi utilizado o software 8x8 ROM PixelFont Editor.
 </h3>
 
-![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/main/Capturar2.PNG)
+![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/Imagens/CriarCaracteres/Capturar2.PNG)
 
-![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/main/Capturar.PNG)
+![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/Imagens/CriarCaracteres/Capturar.PNG)
 
 ![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/main/Imagens/relogiomatrix.gif)
 </h2>
 
-
-<h3 align="">
+<h2>
+<h3 align="center">
 Foi realizado diversos testes de acrescimo de funcionabilidades, no entanto nem todas tentativas tiveram sucesso até o momento. 
 </h3>
 
@@ -39,7 +39,12 @@ Foi realizado diversos testes de acrescimo de funcionabilidades, no entanto nem 
 - - [ ] transmitir ip de conexão para configuração para o display
 
 ![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/main/testes.png)
+</h2>
 
-<h4> Modelagem do case</h4>
-aaaaaaaaaaaaaaaaaaaaa
+<h2>
+<h3 align="center"> Modelagem do case</h3>
+Foi utilizado para o desenho do case onde ficaria o relógio, o software Fusion 360, com o intuito de realizar a impressão das peças. Contudo devido a problemas tecnicos na máquina solicitei a um fornecedor que fizesse a peça cortada em MDF. 
 
+![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/imagens/Modelagem/Case.png)
+
+</h2>
