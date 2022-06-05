@@ -4,7 +4,8 @@
 	🚧 Página em construção...  🚧
 </h4>
 
-![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/main/testes.png)
+![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/main/Imagens/relogiomatrix.gif)
+
 
 ####### Andamento - CONCLUÍDO
 - [x] componentes
@@ -20,4 +21,4 @@
 
 ![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/main/Capturar.PNG)
 
-![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/main/Imagens/relogiomatrix.gif)
+![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/main/testes.png)
