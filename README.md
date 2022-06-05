@@ -6,10 +6,11 @@
 
 ####### Andamento - CONCLUÍDO
 - [x] componentes
-- - [x] placa de desenvolvimento com microcontrolador esp32
-- - [x] cabo usb para alimentação e gravação do algoritmo
-- - [x] jumpers ou cabo fexivel para confecção de jumpers
-- - [x] placa de fenolite perfurada para soldagem dos componentes e proporcionar maior robustes nos pontos de solda
+- - [x] Placa de desenvolvimento com microcontrolador esp32
+- - [x] Display matrix 8x8  (x4)
+- - [x] Cabo usb para alimentação e gravação do algoritmo
+- - [x] Jumpers ou cabo fexivel para confecção de jumpers
+- - [x] Placa de fenolite perfurada para soldagem dos componentes e proporcionar maior robustes nos pontos de solda
 - [x] programação do algoritmo
 - [x] adaptação em algoritmos prontos utilizados
 - [x] criação de caracter para ser exibido
@@ -47,4 +48,5 @@ Foi utilizado para o desenho do case onde ficaria o relógio, o software Fusion 
 
 ![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/main/Imagens/Modelagem/Modelagem.PNG)
 
+![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/main/Imagens/ComCase/fechado.jpg)
 </h2>
