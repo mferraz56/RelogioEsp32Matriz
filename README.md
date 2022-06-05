@@ -19,3 +19,5 @@
 - [x] impressão do case (devido a problemas na impressora na data da realização foi solicitada a confecção por corte de MDF)
 
 ![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/main/Capturar.PNG)
+
+![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/main/Capturar.PNG)
