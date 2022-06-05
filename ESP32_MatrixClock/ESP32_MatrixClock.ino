@@ -50,8 +50,8 @@ BluetoothSerial SerialBT;
 #define MAX_CS        15
 
 // Credentials ----------------------------------------
-#define SSID         "CAMILO";                      // Your WiFi credentials here
-#define PW           "CAMILO10";
+#define SSID         "NomeRedeWifi";                      // Your WiFi credentials here
+#define PW           "SenhaRedeWifi";
 
 // Timezone -------------------------------------------
 //#define TZName "BRT3BRST,M10.2.0/0,M2.3.0/0" // SÃO PAULO
@@ -61,7 +61,7 @@ BluetoothSerial SerialBT;
 //#define TZName     "IST-5:30"                     // New Delhi
 
 // User defined text ----------------------------------
-#define UDTXT "!MF #$"
+#define UDTXT "!MF #$"                        // escreva aqui o texto <<<<<<<<<<<---------------------------------
 // other displays -------------------------------------
 //#define REVERSE_HORIZONTAL                        // Parola, Generic and IC-Station
 //#define REVERSE_VERTICAL                          // IC-Station display
@@ -93,9 +93,6 @@ uint16_t _chbuf[256];
 
 String M_arr[12] = {"Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Setembro","Outubro","Novembro","Dezembro"};
 String WD_arr[7] = {"Domingo,","Segunda,","Terça,","Quarta,","Quinta,","Sexta,","Sabado,"};
-
-// coletar msg site
-//String serverName = "https://sites.google.com/view/matrizrelogio/in%C3%ADcio";
 
 
 

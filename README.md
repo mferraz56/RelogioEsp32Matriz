@@ -1,7 +1,7 @@
 <h1 align="center"> Relógio com ESP32, sincronizado pela internet com a utilização de display matrix </h1>
 
 <h4 align="center"> 
-	🚧 Em construção...  🚧
+	🚧 Página em construção...  🚧
 </h4>
 
 ![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/main/testes.png)
@@ -17,3 +17,5 @@
 - [x] criação de caracter para ser exibido
 - [x] modelagem do case
 - [x] impressão do case (devido a problemas na impressora na data da realização foi solicitada a confecção por corte de MDF)
+
+![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/main/Capturar.PNG)
