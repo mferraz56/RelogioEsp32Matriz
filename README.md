@@ -38,7 +38,7 @@ Foi realizado diversos testes de acrescimo de funcionabilidades, no entanto nem 
 - - [x] Inserir rede caso a salva na memoria de programa esteja errada.
 - - [ ] Alocar em memoria permanente a rede salva.
 - - [ ] Transmitir ip de conexão para configuração para visualização no display
-- [] Consulta de texto pela internet, para mudar texto do dysplay remotamente
+- [ ] Consulta de texto pela internet, para mudar texto do dysplay remotamente
 
 ![alt text](https://github.com/mferraz56/RelogioEsp32Matriz/blob/main/testes.png)
 </h2>
